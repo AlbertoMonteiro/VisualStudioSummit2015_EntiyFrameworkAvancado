@@ -30,6 +30,7 @@ namespace VisualStudioSummitDemo.Interceptors
                         .OfType<IReadOnlyCollection<EdmMember>>()
                         .SelectMany(x => x)
                         .FirstOrDefault(x => x.Name.EndsWith("Inativo")) as EdmProperty;
+
                     if (column != null)
                     {
                         var setClause = DbExpressionBuilder.SetClause(deleteCommand.Target.VariableType.Variable("Inativo").Property(column), DbExpression.FromBoolean(true));

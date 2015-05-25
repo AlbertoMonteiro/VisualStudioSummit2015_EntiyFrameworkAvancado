@@ -11,14 +11,24 @@ namespace VisualStudioSummitDemo.Models
         public DemoContext()
         {
             Database.Log += s => File.AppendAllText(@"C:\temp\eflog.txt", s);
-            DbInterception.Add(new SoftDeleteInterceptor());
         }
 
         public DbSet<Contato> Contatos { get; set; }
+        public DbSet<Tenant> Tenants { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+    }
+
+    public class DemoContextConfiguration : DbConfiguration
+    {
+        public DemoContextConfiguration()
+        {
+            //AddInterceptor(new SoftDeleteInterceptor());
+            AddInterceptor(new MultiTenantInterceptor());
+            AddInterceptor(new MultiTenantTreeInterceptor());
         }
     }
 }

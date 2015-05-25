@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
+using VisualStudioSummitDemo.Interceptors;
 
 namespace VisualStudioSummitDemo.Controllers
 {
@@ -25,6 +22,13 @@ namespace VisualStudioSummitDemo.Controllers
             ViewBag.Message = "Your contact page.";
 
             return View();
+        }
+
+        public ActionResult ChooseTenant(long id)
+        {
+            MultiTenantInterceptor.TentantId = id;
+
+            return RedirectToAction("Index");
         }
     }
 }

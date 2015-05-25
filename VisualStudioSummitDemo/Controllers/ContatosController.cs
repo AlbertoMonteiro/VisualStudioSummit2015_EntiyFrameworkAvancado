@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Linq;
+﻿using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using VisualStudioSummitDemo.Models;
-using EntityState = System.Data.Entity.EntityState;
 
 namespace VisualStudioSummitDemo.Controllers
 {
@@ -16,9 +10,10 @@ namespace VisualStudioSummitDemo.Controllers
         private DemoContext db = new DemoContext();
 
         // GET: Contatos
-        public ActionResult Index(string nome)
+        public ActionResult Index()
         {
-            return View(db.Contatos.Where(c => c.Nome == nome).ToList());
+            var a = 1L;
+            return View(db.Contatos.ToList());
         }
 
         // GET: Contatos/Details/5
@@ -83,7 +78,7 @@ namespace VisualStudioSummitDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contato).State = EntityState.Modified;
+                db.Entry(contato).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
@@ -97,7 +92,7 @@ namespace VisualStudioSummitDemo.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contato contato = db.Contatos.Find(id);
+            var contato = db.Contatos.Find(id);
             if (contato == null)
             {
                 return HttpNotFound();
@@ -110,7 +105,7 @@ namespace VisualStudioSummitDemo.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            Contato contato = db.Contatos.Find(id);
+            var contato = db.Contatos.Find(id);
             db.Contatos.Remove(contato);
             db.SaveChanges();
             return RedirectToAction("Index");

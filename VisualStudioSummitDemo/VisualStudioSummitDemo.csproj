@@ -125,12 +125,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interceptors\MultiTenantInterceptor.cs" />
+    <Compile Include="Interceptors\MultiTenantQueryVisitor.cs" />
+    <Compile Include="Interceptors\MultiTenantTreeInterceptor.cs" />
     <Compile Include="Interceptors\SoftDeleteInterceptor.cs" />
     <Compile Include="Interceptors\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contato.cs" />
     <Compile Include="Models\DemoContext.cs" />
     <Compile Include="Models\Endereco.cs" />
+    <Compile Include="Models\Tenant.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
