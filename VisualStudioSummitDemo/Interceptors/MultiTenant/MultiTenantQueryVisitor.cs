@@ -7,6 +7,13 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant
 {
     public class MultiTenantQueryVisitor : DefaultExpressionVisitor
     {
+        private readonly long id;
+
+        public MultiTenantQueryVisitor(long id = 0)
+        {
+            this.id = id;
+        }
+
         public override DbExpression Visit(DbScanExpression expression)
         {
             var column = expression.Target.ElementType.Members.SingleOrDefault(x => x.Name.EndsWith("TenantId")) as EdmProperty;
@@ -18,6 +25,11 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant
                 .Property(column)
                 .Equal(column.TypeUsage.Parameter("tenantId"));
             return biding.Filter(porEmpresa);
+        }
+
+        public override DbExpression Visit(DbConstantExpression expression)
+        {
+            return id != 0 ? DbExpressionBuilder.Constant(id) : expression;
         }
     }
 }

@@ -11,7 +11,9 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant
             if (interceptionContext.OriginalResult.DataSpace == DataSpace.SSpace)
             {
                 var commandTreeHandler = new DbQueryCommandTreeHandler();
-                commandTreeHandler.SetNextHandler(new DbDeleteCommandTreeHandler());
+                commandTreeHandler.SetNextHandler(new DbDeleteCommandTreeHandler())
+                                  .SetNextHandler(new DbInsertCommandTreeHandler())
+                                  .SetNextHandler(new DbUpdateCommandTreeHandler());
                 var dbCommandTree = commandTreeHandler.HandleRequest(interceptionContext.Result);
                 if (dbCommandTree != null)
                     interceptionContext.Result = dbCommandTree;
