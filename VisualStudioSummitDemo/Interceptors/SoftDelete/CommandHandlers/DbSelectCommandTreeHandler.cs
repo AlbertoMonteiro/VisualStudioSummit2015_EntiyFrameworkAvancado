@@ -1,8 +1,9 @@
 using System.Data.Entity.Core.Common.CommandTrees;
+using VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers;
 
-namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
+namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
 {
-    public class DbQueryCommandTreeHandler : CommandTreeHandlerBase
+    public class DbSelectCommandTreeHandler : CommandTreeHandlerBase
     {
         protected override bool CanHandle(DbCommandTree command)
         {
@@ -15,7 +16,7 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
             return new DbQueryCommandTree(
                 queryCommand.MetadataWorkspace,
                 queryCommand.DataSpace,
-                queryCommand.Query.Accept(new MultiTenantQueryVisitor()));
+                queryCommand.Query.Accept(new SoftDeleteQueryVisitor()));
         }
     }
 }
