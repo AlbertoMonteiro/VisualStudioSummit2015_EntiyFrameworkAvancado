@@ -1,5 +1,6 @@
 ﻿using System.Web.Mvc;
 using VisualStudioSummitDemo.Interceptors;
+using VisualStudioSummitDemo.Interceptors.MultiTenant;
 
 namespace VisualStudioSummitDemo.Controllers
 {

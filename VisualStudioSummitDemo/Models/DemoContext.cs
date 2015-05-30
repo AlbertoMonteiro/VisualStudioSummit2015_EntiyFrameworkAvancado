@@ -3,6 +3,7 @@ using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.IO;
 using VisualStudioSummitDemo.Interceptors;
+using VisualStudioSummitDemo.Interceptors.MultiTenant;
 
 namespace VisualStudioSummitDemo.Models
 {

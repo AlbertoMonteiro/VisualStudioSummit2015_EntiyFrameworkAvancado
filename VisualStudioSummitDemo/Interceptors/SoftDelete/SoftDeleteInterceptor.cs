@@ -5,7 +5,7 @@ using System.Data.Entity.Core.Metadata.Edm;
 using System.Data.Entity.Infrastructure.Interception;
 using System.Linq;
 
-namespace VisualStudioSummitDemo.Interceptors
+namespace VisualStudioSummitDemo.Interceptors.SoftDelete
 {
     public class SoftDeleteInterceptor : IDbCommandTreeInterceptor
     {

@@ -3,7 +3,7 @@ using System.Data.Entity.Infrastructure.Interception;
 using System.Linq;
 using System.Text.RegularExpressions;
 
-namespace VisualStudioSummitDemo.Interceptors
+namespace VisualStudioSummitDemo.Interceptors.MultiTenant
 {
     public class MultiTenantInterceptor : IDbCommandInterceptor
     {

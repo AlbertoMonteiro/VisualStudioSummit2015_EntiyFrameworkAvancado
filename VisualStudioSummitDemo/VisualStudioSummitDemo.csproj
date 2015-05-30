@@ -125,11 +125,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interceptors\MultiTenantInterceptor.cs" />
-    <Compile Include="Interceptors\MultiTenantQueryVisitor.cs" />
-    <Compile Include="Interceptors\MultiTenantTreeInterceptor.cs" />
-    <Compile Include="Interceptors\SoftDeleteInterceptor.cs" />
-    <Compile Include="Interceptors\SoftDeleteQueryVisitor.cs" />
+    <Compile Include="Interceptors\MultiTenant\CommandHandlers\CommandTreeHandlerBase.cs" />
+    <Compile Include="Interceptors\MultiTenant\CommandHandlers\DbDeleteCommandTreeHandler.cs" />
+    <Compile Include="Interceptors\MultiTenant\CommandHandlers\DbQueryCommandTreeHandler.cs" />
+    <Compile Include="Interceptors\MultiTenant\CommandHandlers\ICommandTreeHandler.cs" />
+    <Compile Include="Interceptors\MultiTenant\MultiTenantInterceptor.cs" />
+    <Compile Include="Interceptors\MultiTenant\MultiTenantQueryVisitor.cs" />
+    <Compile Include="Interceptors\MultiTenant\MultiTenantTreeInterceptor.cs" />
+    <Compile Include="Interceptors\SoftDelete\SoftDeleteInterceptor.cs" />
+    <Compile Include="Interceptors\SoftDelete\SoftDeleteQueryVisitor.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contato.cs" />
     <Compile Include="Models\DemoContext.cs" />
