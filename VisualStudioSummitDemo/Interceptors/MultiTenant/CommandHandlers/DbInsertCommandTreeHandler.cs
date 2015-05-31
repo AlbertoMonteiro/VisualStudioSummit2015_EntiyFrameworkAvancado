@@ -38,6 +38,10 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
         {
             var propertyExpression = expression.Property as DbPropertyExpression;
             return DbExpressionBuilder.SetClause(propertyExpression, expression.Value.Accept(new MultiTenantQueryVisitor(MultiTenantInterceptor.TentantId)));
+            /* Fazendo dessa forma o SqlCommand vai ter o parametro "tenantId" duplicado.
+             * var propertyExpression = expression.Property as DbPropertyExpression;
+             * return DbExpressionBuilder.SetClause(propertyExpression, propertyExpression.ResultType.Parameter("tenantId"));
+             */
         }
 
         private static bool HasColumn(DbSetClause setClause)
