@@ -1,16 +1,16 @@
 using System.Data.Entity.Core.Common.CommandTrees;
-using VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers;
-
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
+ 
 namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
 {
-    public class DbSelectCommandTreeHandler : CommandTreeHandlerBase
+    public class DbSelectCommandTreeHandler : CommandTreeHandlerBase<DbQueryCommandTree>
     {
         protected override bool CanHandle(DbCommandTree command)
         {
             return command is DbQueryCommandTree;
         }
 
-        protected override DbCommandTree Handle(DbCommandTree command)
+        protected override DbQueryCommandTree Handle(DbCommandTree command)
         {
             var queryCommand = command as DbQueryCommandTree;
             return new DbQueryCommandTree(

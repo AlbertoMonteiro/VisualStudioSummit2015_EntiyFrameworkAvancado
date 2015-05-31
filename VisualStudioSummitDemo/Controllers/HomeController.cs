@@ -29,7 +29,7 @@ namespace VisualStudioSummitDemo.Controllers
         {
             MultiTenantInterceptor.TentantId = id;
 
-            return RedirectToAction("Index");
+            return Redirect(Request.UrlReferrer.AbsoluteUri);
         }
     }
 }

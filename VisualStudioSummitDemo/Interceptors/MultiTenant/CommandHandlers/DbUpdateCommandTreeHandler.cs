@@ -2,22 +2,17 @@ using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
 
 namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
 {
-    public class DbUpdateCommandTreeHandler : CommandTreeHandlerBase
+    public class DbUpdateCommandTreeHandler : ICommandTreeHandler<DbCommandTree>
     {
         private const string COLUMN_NAME = "TenantId";
 
-        protected override bool CanHandle(DbCommandTree command)
+        public DbCommandTree HandleRequest(DbCommandTree commandTree)
         {
-            return command is DbUpdateCommandTree;
-        }
-
-        protected override DbCommandTree Handle(DbCommandTree command)
-        {
-            var updateCommandTree = command as DbUpdateCommandTree;
-
+            var updateCommandTree = commandTree as DbUpdateCommandTree;
             var dbSetClauses = updateCommandTree.SetClauses.Cast<DbSetClause>().ToList();
 
             dbSetClauses.RemoveAll(HasColumn);
@@ -31,18 +26,12 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
                 .Property(column)
                 .Equal(column.TypeUsage.Constant(MultiTenantInterceptor.TentantId));
 
-            return new DbUpdateCommandTree(updateCommandTree.MetadataWorkspace,
-                                               updateCommandTree.DataSpace,
-                                               updateCommandTree.Target,
-                                               updateCommandTree.Predicate.And(porEmpresa),
-                                               dbSetClauses.Cast<DbModificationClause>().ToList().AsReadOnly(),
-                                               updateCommandTree.Returning);
-        }
-
-        private static DbSetClause CreateSetClause(DbSetClause expression)
-        {
-            var propertyExpression = expression.Property as DbPropertyExpression;
-            return DbExpressionBuilder.SetClause(propertyExpression, expression.Value.Accept(new MultiTenantQueryVisitor(MultiTenantInterceptor.TentantId)));
+            return new DbUpdateCommandTree(commandTree.MetadataWorkspace,
+                                           commandTree.DataSpace,
+                                           updateCommandTree.Target,
+                                           updateCommandTree.Predicate.And(porEmpresa),
+                                           dbSetClauses.Cast<DbModificationClause>().ToList().AsReadOnly(),
+                                           updateCommandTree.Returning);
         }
 
         private static bool HasColumn(DbSetClause setClause)

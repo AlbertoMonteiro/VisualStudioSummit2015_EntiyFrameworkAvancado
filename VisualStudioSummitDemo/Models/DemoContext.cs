@@ -1,9 +1,8 @@
 ﻿using System.Data.Entity;
-using System.Data.Entity.Infrastructure.Interception;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.IO;
-using VisualStudioSummitDemo.Interceptors;
 using VisualStudioSummitDemo.Interceptors.MultiTenant;
+using VisualStudioSummitDemo.Interceptors.SoftDelete;
 
 namespace VisualStudioSummitDemo.Models
 {
@@ -27,7 +26,7 @@ namespace VisualStudioSummitDemo.Models
     {
         public DemoContextConfiguration()
         {
-            //AddInterceptor(new SoftDeleteInterceptor());
+            AddInterceptor(new SoftDeleteInterceptor());
             AddInterceptor(new MultiTenantInterceptor());
             AddInterceptor(new MultiTenantTreeInterceptor());
         }

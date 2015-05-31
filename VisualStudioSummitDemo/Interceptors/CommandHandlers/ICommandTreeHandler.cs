@@ -1,8 +1,10 @@
-namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
+using System.Data.Entity.Core.Common.CommandTrees;
+
+namespace VisualStudioSummitDemo.Interceptors.CommandHandlers
 {
-    public interface ICommandTreeHandler<T>
+    public interface ICommandTreeHandler<out T>
+        where T : DbCommandTree
     {
-        T HandleRequest(T command);
-        ICommandTreeHandler<T> SetNextHandler(ICommandTreeHandler<T> nextHandler);
+        T HandleRequest(DbCommandTree command);
     }
 }

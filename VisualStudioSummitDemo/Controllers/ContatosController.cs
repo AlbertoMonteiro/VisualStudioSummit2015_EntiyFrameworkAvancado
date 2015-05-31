@@ -12,7 +12,6 @@ namespace VisualStudioSummitDemo.Controllers
         // GET: Contatos
         public ActionResult Index()
         {
-            var a = 1L;
             return View(db.Contatos.ToList());
         }
 

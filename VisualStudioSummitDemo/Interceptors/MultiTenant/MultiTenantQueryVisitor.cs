@@ -29,7 +29,7 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant
 
         public override DbExpression Visit(DbConstantExpression expression)
         {
-            return id != 0 ? DbExpressionBuilder.Constant(id) : expression;
+            return id != 0 ? DbExpressionBuilder.Constant(id) : base.Visit(expression);
         }
     }
 }

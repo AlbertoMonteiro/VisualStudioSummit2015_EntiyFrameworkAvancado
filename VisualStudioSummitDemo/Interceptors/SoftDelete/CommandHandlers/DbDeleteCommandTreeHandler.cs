@@ -3,11 +3,11 @@ using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Data.Entity.Core.Metadata.Edm;
 using System.Linq;
-using VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers;
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
 
 namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
 {
-    public class DbDeleteCommandTreeHandler : CommandTreeHandlerBase
+    public class DbDeleteCommandTreeHandler : CommandTreeHandlerBase<DbCommandTree>
     {
         private const string COLUMN_NAME = "Inativo";
 
@@ -25,13 +25,12 @@ namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
             {
                 var setClause = DbExpressionBuilder.SetClause(deleteCommand.Target.VariableType.Variable(COLUMN_NAME).Property(column), DbExpression.FromBoolean(true));
 
-                return new DbUpdateCommandTree(
-                    deleteCommand.MetadataWorkspace,
-                    deleteCommand.DataSpace,
-                    deleteCommand.Target,
-                    deleteCommand.Predicate,
-                    new List<DbModificationClause> { setClause }.AsReadOnly(),
-                    null);
+                return new DbUpdateCommandTree(deleteCommand.MetadataWorkspace,
+                                               deleteCommand.DataSpace,
+                                               deleteCommand.Target,
+                                               deleteCommand.Predicate,
+                                               new List<DbModificationClause> { setClause }.AsReadOnly(),
+                                               null);
             }
             return null;
         }

@@ -1,21 +1,17 @@
 using System.Data.Entity.Core.Common.CommandTrees;
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
 
 namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
 {
-    public class DbDeleteCommandTreeHandler : CommandTreeHandlerBase
+    public class DbDeleteCommandTreeHandler : ICommandTreeHandler<DbCommandTree>
     {
-        protected override bool CanHandle(DbCommandTree command)
+        public DbCommandTree HandleRequest(DbCommandTree commandTree)
         {
-            return command is DbDeleteCommandTree;
-        }
-
-        protected override DbCommandTree Handle(DbCommandTree command)
-        {
-            var dbDeleteCommandTree = command as DbDeleteCommandTree;
-            return new DbDeleteCommandTree(dbDeleteCommandTree.MetadataWorkspace,
-                dbDeleteCommandTree.DataSpace,
-                dbDeleteCommandTree.Target,
-                dbDeleteCommandTree.Predicate.Accept(new MultiTenantQueryVisitor()));
+            var deleteCommandTree = commandTree as DbDeleteCommandTree;
+            return new DbDeleteCommandTree(deleteCommandTree.MetadataWorkspace,
+                deleteCommandTree.DataSpace,
+                deleteCommandTree.Target,
+                deleteCommandTree.Predicate.Accept(new MultiTenantQueryVisitor()));
         }
     }
 }

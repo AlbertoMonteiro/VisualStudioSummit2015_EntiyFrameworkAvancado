@@ -1,22 +1,17 @@
 using System.Data.Entity.Core.Common.CommandTrees;
 using System.Data.Entity.Core.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
 
 namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
 {
-    public class DbInsertCommandTreeHandler : CommandTreeHandlerBase
+    public class DbInsertCommandTreeHandler : ICommandTreeHandler<DbCommandTree>
     {
         private const string COLUMN_NAME = "TenantId";
 
-        protected override bool CanHandle(DbCommandTree command)
+        public DbCommandTree HandleRequest(DbCommandTree commandTree)
         {
-            return command is DbInsertCommandTree;
-        }
-
-        protected override DbCommandTree Handle(DbCommandTree command)
-        {
-            var insertCommandTree = command as DbInsertCommandTree;
-
+            var insertCommandTree = commandTree as DbInsertCommandTree;
             var dbSetClauses = insertCommandTree.SetClauses.Cast<DbSetClause>().ToList();
 
             var setClause = dbSetClauses.FirstOrDefault(HasColumn);
@@ -25,11 +20,11 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
                 dbSetClauses.RemoveAll(HasColumn);
                 dbSetClauses.Add(CreateSetClause(setClause));
 
-                return new DbInsertCommandTree(insertCommandTree.MetadataWorkspace,
-                    insertCommandTree.DataSpace,
-                    insertCommandTree.Target,
-                    dbSetClauses.Cast<DbModificationClause>().ToList().AsReadOnly(),
-                    insertCommandTree.Returning);
+                return new DbInsertCommandTree(commandTree.MetadataWorkspace,
+                                               commandTree.DataSpace,
+                                               insertCommandTree.Target,
+                                               dbSetClauses.Cast<DbModificationClause>().ToList().AsReadOnly(),
+                                               insertCommandTree.Returning);
             }
             return insertCommandTree;
         }

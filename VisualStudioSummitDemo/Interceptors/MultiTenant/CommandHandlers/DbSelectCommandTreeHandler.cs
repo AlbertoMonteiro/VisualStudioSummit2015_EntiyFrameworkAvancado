@@ -1,21 +1,17 @@
 using System.Data.Entity.Core.Common.CommandTrees;
+using VisualStudioSummitDemo.Interceptors.CommandHandlers;
 
 namespace VisualStudioSummitDemo.Interceptors.MultiTenant.CommandHandlers
 {
-    public class DbSelectCommandTreeHandler : CommandTreeHandlerBase
+    public class DbSelectCommandTreeHandler : ICommandTreeHandler<DbCommandTree>
     {
-        protected override bool CanHandle(DbCommandTree command)
+        public DbCommandTree HandleRequest(DbCommandTree queryCommand)
         {
-            return command is DbQueryCommandTree;
-        }
-
-        protected override DbCommandTree Handle(DbCommandTree command)
-        {
-            var queryCommand = command as DbQueryCommandTree;
+            var queryCommandTree = queryCommand as DbQueryCommandTree;
             return new DbQueryCommandTree(
-                queryCommand.MetadataWorkspace,
-                queryCommand.DataSpace,
-                queryCommand.Query.Accept(new MultiTenantQueryVisitor()));
+                queryCommandTree.MetadataWorkspace,
+                queryCommandTree.DataSpace,
+                queryCommandTree.Query.Accept(new MultiTenantQueryVisitor()));
         }
     }
 }

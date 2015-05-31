@@ -10,13 +10,13 @@ namespace VisualStudioSummitDemo.Interceptors.MultiTenant
         {
             if (interceptionContext.OriginalResult.DataSpace == DataSpace.SSpace)
             {
-                var commandTreeHandler = new DbSelectCommandTreeHandler();
-                commandTreeHandler.SetNextHandler(new DbDeleteCommandTreeHandler())
-                                  .SetNextHandler(new DbInsertCommandTreeHandler())
-                                  .SetNextHandler(new DbUpdateCommandTreeHandler());
-                var dbCommandTree = commandTreeHandler.HandleRequest(interceptionContext.Result);
-                if (dbCommandTree != null)
-                    interceptionContext.Result = dbCommandTree;
+                var commandTreeHandler = CommandTreeFactory.GetCommandTreeHandler(interceptionContext.Result.CommandTreeKind);
+                if (commandTreeHandler != null)
+                {
+                    var dbCommandTree = commandTreeHandler.HandleRequest(interceptionContext.Result);
+                    if (dbCommandTree != null)
+                        interceptionContext.Result = dbCommandTree;
+                }
             }
         }
     }
