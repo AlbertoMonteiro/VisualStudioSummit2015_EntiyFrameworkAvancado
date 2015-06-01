@@ -1,0 +1,35 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Shortcut/@EntryValue">s_InsertCommandTest</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Text/@EntryValue">Cenário: Interceptador de auditoria captura o comando insert
+	Dado um comando insert que vai ser executado
+    Quando o insert for executado
+    Então ele deve ter o tipo Insert
+    E o id precisa ser diferente de 0
+    E a data de cricção deve ser preenchida
+    E os novos valores devem ser preenchidos
+    E deve conter o nome da tabela</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Categories/=SpecFlow/@EntryIndexedValue">SpecFlow</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Scope/=CF7C2F2066E462418ABD91975B64021C/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Scope/=CF7C2F2066E462418ABD91975B64021C/Type/@EntryValue">InFileWithMask</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=5160A3470A9414428DFAC7A37884FEB7/Scope/=CF7C2F2066E462418ABD91975B64021C/CustomProperties/=mask/@EntryIndexedValue">*.feature</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Shortcut/@EntryValue">s_UpdateCommandTest</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Text/@EntryValue">Cenário: Interceptador de auditoria captura o comando update
+	Dado um comando update que vai ser executado
+    Quando o update for executado
+    Então ele deve ter o tipo Update
+    E o id precisa ser diferente de 0
+    E a data de criação deve ser preenchida
+    E os novos valores devem ser preenchidos
+    E deve conter o nome da tabela</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Categories/=SpecFlow/@EntryIndexedValue">SpecFlow</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Scope/=CF7C2F2066E462418ABD91975B64021C/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Scope/=CF7C2F2066E462418ABD91975B64021C/Type/@EntryValue">InFileWithMask</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=485E0924B981AF48A9B17EE4BCD17845/Scope/=CF7C2F2066E462418ABD91975B64021C/CustomProperties/=mask/@EntryIndexedValue">*.feature</s:String></wpf:ResourceDictionary>
