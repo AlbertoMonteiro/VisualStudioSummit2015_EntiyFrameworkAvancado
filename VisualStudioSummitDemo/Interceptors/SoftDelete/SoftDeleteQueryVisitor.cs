@@ -9,7 +9,7 @@ namespace VisualStudioSummitDemo.Interceptors.SoftDelete
     {
         public override DbExpression Visit(DbScanExpression expression)
         {
-            var column = expression.Target.ElementType.Members.SingleOrDefault(x => x.Name.EndsWith("Inativo")) as EdmProperty;
+            var column = expression.Target.ElementType.Members.SingleOrDefault(x => x.Name.EndsWith("Inactive")) as EdmProperty;
             if (column == null) return base.Visit(expression);
             
             var biding = expression.Bind();

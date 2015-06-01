@@ -25,7 +25,7 @@ namespace VisualStudioSummitDemo.Interceptors.Auditoria
         public override string ToString()
         {
             return
-                string.Format("Kind: {0} - Created: {1} - On table: {2} - In Transaction: {3} - EntityId: {4}{5}\t{6}",
+                string.Format("Kind: {0}{5}Created: {1}{5}On table: {2}{5}In Transaction: {3}{5}EntityId: {4}{5}NewValues: {6}",
                     Kind, Created, Table, Transaction, EntityId, Environment.NewLine, NewValue);
         }
     }

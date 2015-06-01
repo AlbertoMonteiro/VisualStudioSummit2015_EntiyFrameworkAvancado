@@ -1,111 +1,112 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using VisualStudioSummitDemo.Models;
 
 namespace VisualStudioSummitDemo.Controllers
 {
-    public class ContatosController : Controller
+    public class ContactsController : Controller
     {
         private DemoContext db = new DemoContext();
 
-        // GET: Contatos
+        // GET: Contacts
         public ActionResult Index()
         {
-            return View(db.Contatos.ToList());
+            return View(db.Contacts.ToList());
         }
 
-        // GET: Contatos/Details/5
+        // GET: Contacts/Details/5
         public ActionResult Details(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contato contato = db.Contatos.Find(id);
-            if (contato == null)
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
             {
                 return HttpNotFound();
             }
-            return View(contato);
+            return View(contact);
         }
 
-        // GET: Contatos/Create
+        // GET: Contacts/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Contatos/Create
+        // POST: Contacts/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nome,Endereço,Telefone,Celular")] Contato contato)
+        public ActionResult Create([Bind(Include = "Id,Name,Genre,BirthDate,Inactive")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.Contatos.Add(contato);
+                db.Contacts.Add(contact);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(contato);
+            return View(contact);
         }
 
-        // GET: Contatos/Edit/5
+        // GET: Contacts/Edit/5
         public ActionResult Edit(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Contato contato = db.Contatos.Find(id);
-            if (contato == null)
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
             {
                 return HttpNotFound();
             }
-            return View(contato);
+            return View(contact);
         }
 
-        // POST: Contatos/Edit/5
+        // POST: Contacts/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nome,Endereço,Telefone,Celular")] Contato contato)
+        public ActionResult Edit([Bind(Include = "Id,Name,Genre,BirthDate,Inactive")] Contact contact)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(contato).State = System.Data.Entity.EntityState.Modified;
+                db.Entry(contact).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(contato);
+            return View(contact);
         }
 
-        // GET: Contatos/Delete/5
+        // GET: Contacts/Delete/5
         public ActionResult Delete(long? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var contato = db.Contatos.Find(id);
-            if (contato == null)
+            Contact contact = db.Contacts.Find(id);
+            if (contact == null)
             {
                 return HttpNotFound();
             }
-            return View(contato);
+            return View(contact);
         }
 
-        // POST: Contatos/Delete/5
+        // POST: Contacts/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(long id)
         {
-            var contato = db.Contatos.Find(id);
-            db.Contatos.Remove(contato);
+            Contact contact = db.Contacts.Find(id);
+            db.Contacts.Remove(contact);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

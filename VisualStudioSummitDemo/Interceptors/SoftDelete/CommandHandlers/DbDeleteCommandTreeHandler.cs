@@ -9,7 +9,7 @@ namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
 {
     public class DbDeleteCommandTreeHandler : CommandTreeHandlerBase<DbCommandTree>
     {
-        private const string COLUMN_NAME = "Inativo";
+        private const string COLUMN_NAME = "Inactive";
 
         protected override bool CanHandle(DbCommandTree command)
         {
