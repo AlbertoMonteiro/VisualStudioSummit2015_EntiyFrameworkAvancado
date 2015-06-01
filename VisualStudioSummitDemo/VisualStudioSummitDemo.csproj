@@ -124,6 +124,13 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Interceptors\Auditoria\AuditEntry.cs" />
+    <Compile Include="Interceptors\Auditoria\AuditingCommandInterceptor.cs" />
+    <Compile Include="Interceptors\Auditoria\CommandHandlers\CommandHandler.cs" />
+    <Compile Include="Interceptors\Auditoria\CommandHandlers\DbCommandWraper.cs" />
+    <Compile Include="Interceptors\Auditoria\CommandHandlers\CommandHandlers.cs" />
+    <Compile Include="Interceptors\Auditoria\CommandHandlers\ICommandHandler.cs" />
+    <Compile Include="Interceptors\Auditoria\CommandHandlers\IDbCommandWraper.cs" />
     <Compile Include="Interceptors\CommandHandlers\CommandTreeHandlerBase.cs" />
     <Compile Include="Interceptors\MultiTenant\CommandHandlers\CommandTreeFactory.cs" />
     <Compile Include="Interceptors\MultiTenant\CommandHandlers\DbDeleteCommandTreeHandler.cs" />
