@@ -10,7 +10,7 @@ namespace VisualStudioSummitDemo.Models
     { 
         public DemoContext()
         {
-            Database.Log += s => File.AppendAllText(@"C:\temp\eflog.txt", s);
+            //Database.Log += s => File.AppendAllText(@"C:\temp\eflog.txt", s);
         }
 
         public DbSet<Contato> Contatos { get; set; }
