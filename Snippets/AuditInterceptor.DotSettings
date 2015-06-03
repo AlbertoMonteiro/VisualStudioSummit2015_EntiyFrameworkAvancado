@@ -98,6 +98,26 @@ public void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext&lt;
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Shortcut/@EntryValue">s_CustomSqlServerMigrationSqlGenerator</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Text/@EntryValue">var dropAllForeignKeyOperation = migrationOperation as DropAllForeignKeysOperation;&#xD;
+if (dropAllForeignKeyOperation != null)&#xD;
+{&#xD;
+    using (var write = Writer())&#xD;
+    {&#xD;
+        write.WriteLine(dropAllForeignKeyOperation.GetSql());&#xD;
+&#xD;
+        Statement(write.InnerWriter.ToString(), suppressTransaction: true);&#xD;
+    }&#xD;
+}&#xD;
+else &#xD;
+    base.Generate(migrationOperation);</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Shortcut/@EntryValue">s_DeleteCommandHandlerBody</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Text/@EntryValue">const string DELETE_PATTERN = @"DELETE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?WHERE \(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;
@@ -111,6 +131,93 @@ public DeleteCommandHandler(DbCommandInterceptionContext&lt;int&gt; context)&#xD
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Shortcut/@EntryValue">s_DropAllForeignKeysExtensionMethod</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Text/@EntryValue">public static void DropAllForeignKeys(this DbMigration migration, string tableWithFk, string columnFk, string tableReferenced)&#xD;
+{&#xD;
+    var dbMigration = (IDbMigration)migration;&#xD;
+    dbMigration.AddOperation(new DropAllForeignKeysOperation(tableWithFk, columnFk, tableReferenced));&#xD;
+}&#xD;
+</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Shortcut/@EntryValue">s_DropAllForeignKeysOperation</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Text/@EntryValue">#region SQL&#xD;
+const string DROP_FOREIGN_KEY = @"&#xD;
+DECLARE @tableWithFK varchar(255), @fkName varchar(255), @command varchar(255);&#xD;
+DECLARE DeleteForeignKeys CURSOR FOR&#xD;
+SELECT t.name  AS 'Tabela que contém FK', &#xD;
+       fk.name AS 'Nome FK'       &#xD;
+FROM   sys.foreign_key_columns fkc &#xD;
+       INNER JOIN sys.tables t &#xD;
+               ON t.object_id = fkc.parent_object_id &#xD;
+       INNER JOIN sys.tables t1 &#xD;
+       ON t1.object_id = fkc.referenced_object_id&#xD;
+       INNER JOIN sys.columns c1 &#xD;
+               ON c1.object_id = fkc.parent_object_id &#xD;
+                  AND c1.column_id = fkc.parent_column_id &#xD;
+       INNER JOIN sys.foreign_keys fk &#xD;
+               ON fk.object_id = fkc.constraint_object_id &#xD;
+	   INNER JOIN sys.schemas sc &#xD;
+               ON t.schema_id = sc.schema_id&#xD;
+WHERE  (sc.name + '.' +t.name) = '{0}'&#xD;
+       AND c1.name = '{1}'&#xD;
+       AND (sc.name + '.' +t1.name) = '{2}'&#xD;
+OPEN DeleteForeignKeys;&#xD;
+FETCH NEXT FROM DeleteForeignKeys INTO @tableWithFK, @fkName;&#xD;
+WHILE @@FETCH_STATUS = 0&#xD;
+   BEGIN&#xD;
+        SET @command = 'ALTER TABLE [dbo].[' + @tableWithFK + '] DROP CONSTRAINT [' + @fkName + ']'&#xD;
+        PRINT @command;&#xD;
+        EXEC (@command);&#xD;
+        FETCH NEXT FROM DeleteForeignKeys INTO @tableWithFK, @fkName;&#xD;
+   END;&#xD;
+CLOSE DeleteForeignKeys;&#xD;
+DEALLOCATE DeleteForeignKeys;";&#xD;
+#endregion        &#xD;
+private readonly Configuration _configuration;&#xD;
+&#xD;
+public DropAllForeignKeysOperation(string tableWithFk, string columnFk, string tableReferenced)&#xD;
+    : base(new Configuration(tableWithFk, columnFk, tableReferenced))&#xD;
+{&#xD;
+    _configuration = new Configuration(tableWithFk, columnFk, tableReferenced);&#xD;
+}&#xD;
+&#xD;
+public override bool IsDestructiveChange&#xD;
+{&#xD;
+    get { return false; }&#xD;
+}&#xD;
+&#xD;
+public string GetSql()&#xD;
+{&#xD;
+    return string.Format(DROP_FOREIGN_KEY, _configuration.TableWithFk, _configuration.ColumnFk, _configuration.TableReferenced);&#xD;
+}&#xD;
+&#xD;
+internal class Configuration&#xD;
+{&#xD;
+    public string TableWithFk { get; private set; }&#xD;
+    public string ColumnFk { get; private set; }&#xD;
+    public string TableReferenced { get; private set; }&#xD;
+&#xD;
+    public Configuration(string tableWithFk, string columnFk, string tableReferenced)&#xD;
+    {&#xD;
+        TableWithFk = tableWithFk;&#xD;
+        ColumnFk = columnFk;&#xD;
+        TableReferenced = tableReferenced;&#xD;
+    }&#xD;
+}&#xD;
+</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Shortcut/@EntryValue">s_InsertCommandHandlerBody</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Text/@EntryValue">public const string INSERT_PATTERN = @"INSERT \[dbo\]\.\[(?&lt;table&gt;\w+)\]\(((?&lt;field&gt;\[\w+\]),? ?)+\)\r?\n?VALUES \(((?&lt;value&gt;@\d+|NULL),?\s?)+";&#xD;
@@ -139,6 +246,15 @@ protected override long GetEntityId(IDbCommandWraper command, Match match)&#xD;
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Shortcut/@EntryValue">s_SetMigrationSqlGenerator</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Text/@EntryValue">SetMigrationSqlGenerator(SqlProviderServices.ProviderInvariantName, () =&gt; new CustomSqlServerMigrationSqlGenerator());</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Shortcut/@EntryValue">s_UpdateCommandHandlerBody</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Text/@EntryValue">const string UPDATE_PATTERN = @"UPDATE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?SET (\[(?&lt;field&gt;\w+)\] = (?&lt;value&gt;(?&gt;@)\d+|NULL),?\s?)+\r?\n?WHERE \(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;

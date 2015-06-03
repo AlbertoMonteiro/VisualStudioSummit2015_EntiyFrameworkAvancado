@@ -76,11 +76,11 @@ this.ScenarioSetup(scenarioInfo);
 #line 6
     testRunner.When("o delete for executado", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Quando ");
 #line 7
-    testRunner.Then("ele deve ter o tipo Delete", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
+    testRunner.Then("ele deve ter o tipo \"Delete\"", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Então ");
 #line 8
     testRunner.And("o id precisa ser diferente de 0", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 9
-    testRunner.And("a data de cricção deve ser preenchida", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
+    testRunner.And("a data de criação deve ser preenchida", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 10
     testRunner.And("os novos valores devem ser preenchidos", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "E ");
 #line 11

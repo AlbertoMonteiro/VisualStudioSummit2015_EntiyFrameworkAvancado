@@ -48,10 +48,12 @@ namespace VisualStudioSummitDemo.Tests.Audiotoria
             _auditEntry = deleteCommandHandler.HandleCommand(_dbCommandWraper);
         }
 
-        [Then(@"ele deve ter o tipo Delete")]
-        public void EntaoEleDeveTerOTipoDelete()
+        [Then(@"ele deve ter o tipo ""(.*)""")]
+        public void EntaoEleDeveTerOTipoDelete(string tipo)
         {
-            Assert.AreEqual(AuditEntryKind.Delete, _auditEntry.Kind);
+            AuditEntryKind valor;
+            AuditEntryKind.TryParse(tipo, out valor);
+            Assert.AreEqual(valor, _auditEntry.Kind);
         }
 
         [Then(@"o id precisa ser diferente de (.*)")]
@@ -60,7 +62,7 @@ namespace VisualStudioSummitDemo.Tests.Audiotoria
             Assert.AreEqual(3, _auditEntry.EntityId);
         }
 
-        [Then(@"a data de cricção deve ser preenchida")]
+        [Then(@"a data de criação deve ser preenchida")]
         public void EntaoADataDeCriccaoDeveSerPreenchida()
         {
             Assert.AreNotEqual(DateTime.MinValue, _auditEntry.Created);
@@ -69,9 +71,7 @@ namespace VisualStudioSummitDemo.Tests.Audiotoria
         [Then(@"os novos valores devem ser preenchidos")]
         public void EntaoOsNovosValoresDevemSerPreenchidos()
         {
-            const string EXPECTED = "";
-
-            Assert.AreEqual(EXPECTED, _auditEntry.NewValue);
+            Assert.AreEqual("", _auditEntry.NewValue);
         }
 
         [Then(@"deve conter o nome da tabela")]

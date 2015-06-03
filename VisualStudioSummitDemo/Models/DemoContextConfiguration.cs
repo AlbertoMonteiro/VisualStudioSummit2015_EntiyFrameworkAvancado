@@ -1,9 +1,11 @@
 ﻿using System.Configuration;
 using System.Data.Entity;
+using System.Data.Entity.SqlServer;
 using System.Diagnostics;
 using VisualStudioSummitDemo.Interceptors.Auditoria;
 using VisualStudioSummitDemo.Interceptors.MultiTenant;
 using VisualStudioSummitDemo.Interceptors.SoftDelete;
+using VisualStudioSummitDemo.Migrations.CustomOperations;
 
 namespace VisualStudioSummitDemo.Models
 {
