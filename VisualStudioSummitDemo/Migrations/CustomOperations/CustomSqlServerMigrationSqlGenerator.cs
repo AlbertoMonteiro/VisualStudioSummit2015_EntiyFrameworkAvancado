@@ -7,7 +7,18 @@ namespace VisualStudioSummitDemo.Migrations.CustomOperations
     {
         protected override void Generate(MigrationOperation migrationOperation)
         {
-            base.Generate(migrationOperation);
+            var dropAllForeignKeyOperation = migrationOperation as DropAllForeignKeysOperation;
+            if (dropAllForeignKeyOperation != null)
+            {
+                using (var write = Writer())
+                {
+                    write.WriteLine(dropAllForeignKeyOperation.GetSql());
+
+                    Statement(write.InnerWriter.ToString(), suppressTransaction: true);
+                }
+            }
+            else
+                base.Generate(migrationOperation);
         }
     }
 }

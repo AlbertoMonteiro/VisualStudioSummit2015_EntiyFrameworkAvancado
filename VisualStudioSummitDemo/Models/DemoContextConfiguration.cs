@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Data.Entity;
 using System.Data.Entity.SqlServer;
 using System.Diagnostics;
@@ -13,10 +14,15 @@ namespace VisualStudioSummitDemo.Models
     {
         public DemoContextConfiguration()
         {
+            SetMigrationSqlGenerator(SqlProviderServices.ProviderInvariantName, () => new CustomSqlServerMigrationSqlGenerator());
+            
             AddInterceptor(new SoftDeleteInterceptor());
+            
             AddInterceptor(new MultiTenantInterceptor());
             AddInterceptor(new MultiTenantTreeInterceptor());
-            AddInterceptor(new AuditingCommandInterceptor(x => Debug.WriteLine(x.ToString(), "AuditingCommandInterceptor"), ConfigurationManager.ConnectionStrings["DemoContext"].ConnectionString));
+
+            Action<AuditEntry> action = x => Debug.WriteLine(x.ToString(), "AuditingCommandInterceptor");
+            AddInterceptor(new AuditingCommandInterceptor(action, ConfigurationManager.ConnectionStrings["DemoContext"].ConnectionString));
         }
     }
 }
