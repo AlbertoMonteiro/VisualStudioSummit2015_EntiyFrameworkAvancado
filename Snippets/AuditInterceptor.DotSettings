@@ -1,150 +1,57 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Shortcut/@EntryValue">s_AuditEntryBody</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Description/@EntryValue">Corpo da clase AuditEntry</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Text/@EntryValue">internal AuditEntry(AuditEntryKind kind)&#xD;
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Shortcut/@EntryValue">s_UpdateCommandHandlerBody</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Text/@EntryValue">const string UPDATE_PATTERN = @"UPDATE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?SET (\[(?&lt;field&gt;\w+)\] = (?&lt;value&gt;(?&gt;@)\d+|NULL),?\s?)+\r?\n?WHERE .+?\(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;
+public UpdateCommandHandler(DbCommandInterceptionContext&lt;int&gt; context)&#xD;
+    : base(context, AuditEntryKind.Update, UPDATE_PATTERN)&#xD;
 {&#xD;
-    Kind = kind;&#xD;
-    Created = DateTime.Now;&#xD;
-}&#xD;
-&#xD;
-public long EntityId { get; set; }&#xD;
-&#xD;
-public DateTime Created { get; private set; }&#xD;
-&#xD;
-public string Table { get; set; }&#xD;
-&#xD;
-public int Transaction { get; set; }&#xD;
-&#xD;
-public string NewValue { get; set; }&#xD;
-&#xD;
-public AuditEntryKind Kind { get; private set; }&#xD;
-&#xD;
-public override string ToString()&#xD;
-{&#xD;
-    return string.Format("Kind: {0} - Created: {1} - On table: {2} - In Transaction: {3} - EntityId: {4}{5}\t{6}", Kind, Created, Table, Transaction, EntityId, Environment.NewLine, NewValue);&#xD;
 }</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Shortcut/@EntryValue">s_AuditEntryKindOptions</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Description/@EntryValue">Opções do AuditEntryKind</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Text/@EntryValue">Insert,&#xD;
-Update,&#xD;
-Delete</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Shortcut/@EntryValue">s_AuditingCommandInterceptorBody</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Description/@EntryValue">Corpo da classe AuditingCommandInterceptor</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Text/@EntryValue">private readonly string _connectionString;&#xD;
-public Action&lt;AuditEntry&gt; Log { get; set; }&#xD;
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Shortcut/@EntryValue">s_SetMigrationSqlGenerator</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Text/@EntryValue">SetMigrationSqlGenerator(SqlProviderServices.ProviderInvariantName, () =&gt; new CustomSqlServerMigrationSqlGenerator());</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Shortcut/@EntryValue">s_InsertCommandHandlerBody</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Text/@EntryValue">public const string INSERT_PATTERN = @"INSERT \[dbo\]\.\[(?&lt;table&gt;\w+)\]\(((?&lt;field&gt;\[\w+\]),? ?)+\)\r?\n?VALUES \(((?&lt;value&gt;@\d+|NULL),?\s?)+";&#xD;
 &#xD;
-public AuditingCommandInterceptor(Action&lt;AuditEntry&gt; log, string connectionString)&#xD;
-{&#xD;
-    _connectionString = connectionString;&#xD;
-    Log = log;&#xD;
-}&#xD;
-&#xD;
-#region Uneeded methods&#xD;
-public void NonQueryExecuting(DbCommand command, DbCommandInterceptionContext&lt;int&gt; interceptionContext)&#xD;
+public InsertCommandHandler(DbCommandInterceptionContext&lt;DbDataReader&gt; context)&#xD;
+    : base(context, AuditEntryKind.Insert, INSERT_PATTERN)&#xD;
 {&#xD;
 }&#xD;
 &#xD;
-public void ReaderExecuting(DbCommand command, DbCommandInterceptionContext&lt;DbDataReader&gt; interceptionContext)&#xD;
+protected override long GetEntityId(IDbCommandWraper command, Match match)&#xD;
 {&#xD;
-}&#xD;
-&#xD;
-public void ScalarExecuting(DbCommand command, DbCommandInterceptionContext&lt;object&gt; interceptionContext)&#xD;
-{&#xD;
-}&#xD;
-&#xD;
-public void ScalarExecuted(DbCommand command, DbCommandInterceptionContext&lt;object&gt; interceptionContext)&#xD;
-{&#xD;
-}&#xD;
-&#xD;
-#endregion&#xD;
-&#xD;
-public void ReaderExecuted(DbCommand command, DbCommandInterceptionContext&lt;DbDataReader&gt; context)&#xD;
-{&#xD;
-    ICommandHandler insert = new InsertCommandHandler(context);&#xD;
-    var auditEntry = insert.HandleCommand(new DbCommandWraper(command, _connectionString));&#xD;
-&#xD;
-    if (auditEntry != null)&#xD;
-        Log(auditEntry);&#xD;
-}&#xD;
-&#xD;
-public void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext&lt;int&gt; context)&#xD;
-{&#xD;
-    ICommandHandler updateHandler = new UpdateCommandHandler(context);&#xD;
-    updateHandler.SetNext(new DeleteCommandHandler(context));&#xD;
-    var auditEntry = updateHandler.HandleCommand(new DbCommandWraper(command, _connectionString));&#xD;
-&#xD;
-    if (auditEntry == null) return;&#xD;
-    Log(auditEntry);&#xD;
-}&#xD;
-</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Shortcut/@EntryValue">s_CustomSqlServerMigrationSqlGenerator</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Text/@EntryValue">var dropAllForeignKeyOperation = migrationOperation as DropAllForeignKeysOperation;&#xD;
-if (dropAllForeignKeyOperation != null)&#xD;
-{&#xD;
-    using (var write = Writer())&#xD;
+    long entityId;&#xD;
+    using (var dbCommand = command.Connection.CreateCommand())&#xD;
     {&#xD;
-        write.WriteLine(dropAllForeignKeyOperation.GetSql());&#xD;
-&#xD;
-        Statement(write.InnerWriter.ToString(), suppressTransaction: true);&#xD;
+        Context.OriginalResult.Close();&#xD;
+        dbCommand.Transaction = command.Transaction;&#xD;
+        dbCommand.CommandText = string.Format(@"SELECT CAST(IDENT_CURRENT('{0}') as bigint) as Id;", match.Groups["table"].Value);&#xD;
+        entityId = (long)dbCommand.ExecuteScalar();&#xD;
+        Context.Result = dbCommand.ExecuteReader();&#xD;
     }&#xD;
-}&#xD;
-else &#xD;
-    base.Generate(migrationOperation);</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Shortcut/@EntryValue">s_DeleteCommandHandlerBody</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Text/@EntryValue">const string DELETE_PATTERN = @"DELETE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?WHERE \(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;
-public DeleteCommandHandler(DbCommandInterceptionContext&lt;int&gt; context)&#xD;
-    : base(context, AuditEntryKind.Delete, DELETE_PATTERN)&#xD;
-{&#xD;
+    return entityId;&#xD;
 }</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Shortcut/@EntryValue">s_DropAllForeignKeysExtensionMethod</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Text/@EntryValue">public static void DropAllForeignKeys(this DbMigration migration, string tableWithFk, string columnFk, string tableReferenced)&#xD;
-{&#xD;
-    var dbMigration = (IDbMigration)migration;&#xD;
-    dbMigration.AddOperation(new DropAllForeignKeysOperation(tableWithFk, columnFk, tableReferenced));&#xD;
-}&#xD;
-</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Shortcut/@EntryValue">s_DropAllForeignKeysOperation</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Text/@EntryValue">#region SQL&#xD;
@@ -214,57 +121,160 @@ internal class Configuration&#xD;
 </s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Reformat/@EntryValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
 	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=AE9C00BDD8394149B7CA47419CDC4ED8/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Shortcut/@EntryValue">s_InsertCommandHandlerBody</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Text/@EntryValue">public const string INSERT_PATTERN = @"INSERT \[dbo\]\.\[(?&lt;table&gt;\w+)\]\(((?&lt;field&gt;\[\w+\]),? ?)+\)\r?\n?VALUES \(((?&lt;value&gt;@\d+|NULL),?\s?)+";&#xD;
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Shortcut/@EntryValue">s_DropAllForeignKeysExtensionMethod</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Text/@EntryValue">public static void DropAllForeignKeys(this DbMigration migration, string tableWithFk, string columnFk, string tableReferenced)&#xD;
+{&#xD;
+    var dbMigration = (IDbMigration)migration;&#xD;
+    dbMigration.AddOperation(new DropAllForeignKeysOperation(tableWithFk, columnFk, tableReferenced));&#xD;
+}&#xD;
+</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=B18FCBA5ECD0BE42BBB0B259AE8369A3/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Shortcut/@EntryValue">s_DeleteCommandHandlerBody</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Text/@EntryValue">const string DELETE_PATTERN = @"DELETE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?WHERE \(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;
+public DeleteCommandHandler(DbCommandInterceptionContext&lt;int&gt; context)&#xD;
+    : base(context, AuditEntryKind.Delete, DELETE_PATTERN)&#xD;
+{&#xD;
+}</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=692AFA74B489B749A0FD0023F4DEB4C1/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Shortcut/@EntryValue">s_CustomSqlServerMigrationSqlGenerator</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Text/@EntryValue">var dropAllForeignKeyOperation = migrationOperation as DropAllForeignKeysOperation;&#xD;
+if (dropAllForeignKeyOperation != null)&#xD;
+{&#xD;
+    using (var write = Writer())&#xD;
+    {&#xD;
+        write.WriteLine(dropAllForeignKeyOperation.GetSql());&#xD;
 &#xD;
-public InsertCommandHandler(DbCommandInterceptionContext&lt;DbDataReader&gt; context)&#xD;
-    : base(context, AuditEntryKind.Insert, INSERT_PATTERN)&#xD;
+        Statement(write.InnerWriter.ToString(), suppressTransaction: true);&#xD;
+    }&#xD;
+}&#xD;
+else &#xD;
+    base.Generate(migrationOperation);</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=078DCCE2B126514DB4A1B59D0C46983D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Shortcut/@EntryValue">s_AuditingCommandInterceptorBody</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Description/@EntryValue">Corpo da classe AuditingCommandInterceptor</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Text/@EntryValue">private readonly string _connectionString;&#xD;
+public Action&lt;AuditEntry&gt; Log { get; set; }&#xD;
+&#xD;
+public AuditingCommandInterceptor(Action&lt;AuditEntry&gt; log, string connectionString)&#xD;
+{&#xD;
+    _connectionString = connectionString;&#xD;
+    Log = log;&#xD;
+}&#xD;
+&#xD;
+#region Uneeded methods&#xD;
+public void NonQueryExecuting(DbCommand command, DbCommandInterceptionContext&lt;int&gt; interceptionContext)&#xD;
 {&#xD;
 }&#xD;
 &#xD;
-protected override long GetEntityId(IDbCommandWraper command, Match match)&#xD;
+public void ReaderExecuting(DbCommand command, DbCommandInterceptionContext&lt;DbDataReader&gt; interceptionContext)&#xD;
 {&#xD;
-    long entityId;&#xD;
-    using (var dbCommand = command.Connection.CreateCommand())&#xD;
-    {&#xD;
-        Context.OriginalResult.Close();&#xD;
-        dbCommand.Transaction = command.Transaction;&#xD;
-        dbCommand.CommandText = string.Format(@"SELECT CAST(IDENT_CURRENT('{0}') as bigint) as Id;", match.Groups["table"].Value);&#xD;
-        entityId = (long)dbCommand.ExecuteScalar();&#xD;
-        Context.Result = dbCommand.ExecuteReader();&#xD;
-    }&#xD;
-    return entityId;&#xD;
-}</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=0C3F8B9786F1E64C9FD148540B5DEC60/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Shortcut/@EntryValue">s_SetMigrationSqlGenerator</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Text/@EntryValue">SetMigrationSqlGenerator(SqlProviderServices.ProviderInvariantName, () =&gt; new CustomSqlServerMigrationSqlGenerator());</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=FA49DE67327E8141AFEA0538233759FF/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Shortcut/@EntryValue">s_UpdateCommandHandlerBody</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Text/@EntryValue">const string UPDATE_PATTERN = @"UPDATE \[dbo\]\.\[(?&lt;table&gt;\w+)\]\r?\n?SET (\[(?&lt;field&gt;\w+)\] = (?&lt;value&gt;(?&gt;@)\d+|NULL),?\s?)+\r?\n?WHERE \(\[Id\] = (?&lt;id&gt;@\d+)\)";&#xD;
-public UpdateCommandHandler(DbCommandInterceptionContext&lt;int&gt; context)&#xD;
-    : base(context, AuditEntryKind.Update, UPDATE_PATTERN)&#xD;
+}&#xD;
+&#xD;
+public void ScalarExecuting(DbCommand command, DbCommandInterceptionContext&lt;object&gt; interceptionContext)&#xD;
 {&#xD;
+}&#xD;
+&#xD;
+public void ScalarExecuted(DbCommand command, DbCommandInterceptionContext&lt;object&gt; interceptionContext)&#xD;
+{&#xD;
+}&#xD;
+&#xD;
+#endregion&#xD;
+&#xD;
+public void ReaderExecuted(DbCommand command, DbCommandInterceptionContext&lt;DbDataReader&gt; context)&#xD;
+{&#xD;
+    ICommandHandler insert = new InsertCommandHandler(context);&#xD;
+    var auditEntry = insert.HandleCommand(new DbCommandWraper(command, _connectionString));&#xD;
+&#xD;
+    if (auditEntry != null)&#xD;
+        Log(auditEntry);&#xD;
+}&#xD;
+&#xD;
+public void NonQueryExecuted(DbCommand command, DbCommandInterceptionContext&lt;int&gt; context)&#xD;
+{&#xD;
+    ICommandHandler updateHandler = new UpdateCommandHandler(context);&#xD;
+    updateHandler.SetNext(new DeleteCommandHandler(context));&#xD;
+    var auditEntry = updateHandler.HandleCommand(new DbCommandWraper(command, _connectionString));&#xD;
+&#xD;
+    if (auditEntry == null) return;&#xD;
+    Log(auditEntry);&#xD;
+}&#xD;
+</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EA1C318E9E2CF54DAD3E5B53B2BF3DDB/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Shortcut/@EntryValue">s_AuditEntryKindOptions</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Description/@EntryValue">Opções do AuditEntryKind</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Text/@EntryValue">Insert,&#xD;
+Update,&#xD;
+Delete</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=EBA5CF0AD0C4B14DBD6FA26BAD2359ED/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Shortcut/@EntryValue">s_AuditEntryBody</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Description/@EntryValue">Corpo da clase AuditEntry</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Text/@EntryValue">internal AuditEntry(AuditEntryKind kind)&#xD;
+{&#xD;
+    Kind = kind;&#xD;
+    Created = DateTime.Now;&#xD;
+}&#xD;
+&#xD;
+public long EntityId { get; set; }&#xD;
+&#xD;
+public DateTime Created { get; private set; }&#xD;
+&#xD;
+public string Table { get; set; }&#xD;
+&#xD;
+public int Transaction { get; set; }&#xD;
+&#xD;
+public string NewValue { get; set; }&#xD;
+&#xD;
+public AuditEntryKind Kind { get; private set; }&#xD;
+&#xD;
+public override string ToString()&#xD;
+{&#xD;
+    return string.Format("Kind: {0} - Created: {1} - On table: {2} - In Transaction: {3} - EntityId: {4}{5}\t{6}", Kind, Created, Table, Transaction, EntityId, Environment.NewLine, NewValue);&#xD;
 }</s:String>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Reformat/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
-	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
-	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=93346E9865E4CC478231A59D2921118D/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String></wpf:ResourceDictionary>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Reformat/@EntryValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/ShortenQualifiedReferences/@EntryValue">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Categories/=Imported_002003_002F06_002F2015/@EntryIndexedValue">Imported 03/06/2015</s:String>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Applicability/=Live/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/@KeyIndexDefined">True</s:Boolean>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/Type/@EntryValue">InCSharpFile</s:String>
+	<s:String x:Key="/Default/PatternsAndTemplates/LiveTemplates/Template/=12FE5C2E7CA01B4EBC01FB354D129E04/Scope/=C3001E7C0DA78E4487072B7E050D86C5/CustomProperties/=minimumLanguageVersion/@EntryIndexedValue">2.0</s:String></wpf:ResourceDictionary>
