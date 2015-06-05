@@ -16,7 +16,7 @@ namespace VisualStudioSummitDemo.Models
         {
             SetMigrationSqlGenerator(SqlProviderServices.ProviderInvariantName, () => new CustomSqlServerMigrationSqlGenerator());
             
-            AddInterceptor(new SoftDeleteInterceptor());
+            //AddInterceptor(new SoftDeleteInterceptor());
             
             AddInterceptor(new MultiTenantInterceptor());
             AddInterceptor(new MultiTenantTreeInterceptor());

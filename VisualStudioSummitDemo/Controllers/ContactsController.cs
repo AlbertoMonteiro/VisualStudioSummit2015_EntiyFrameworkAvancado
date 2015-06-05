@@ -13,7 +13,8 @@ namespace VisualStudioSummitDemo.Controllers
         // GET: Contacts
         public ActionResult Index()
         {
-            return View(db.Contacts.ToList());
+            var contacts = db.Contacts.ToList();
+            return View(contacts);
         }
 
         // GET: Contacts/Details/5

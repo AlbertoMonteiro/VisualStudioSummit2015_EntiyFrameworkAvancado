@@ -14,6 +14,17 @@ namespace VisualStudioSummitDemo.Interceptors.Auditoria.CommandHandlers
         }
     }
 
+    public class UpdateCommandHandler : CommandHandler<int>
+    {
+        private const string UPDATE_PATTERN =
+            @"UPDATE \[dbo\]\.\[(?<table>\w+)\]\r?\n?SET (\[(?<field>\w+)\] = (?<value>(?>@)\d+|NULL),?\s?)+\r?\n?WHERE .+?\(\[Id\] = (?<id>@\d+)\)";
+
+        public UpdateCommandHandler(DbCommandInterceptionContext<int> context)
+            : base(context, AuditEntryKind.Update, UPDATE_PATTERN)
+        {
+        }
+    }
+
     public class InsertCommandHandler : CommandHandler<DbDataReader>
     {
         public const string INSERT_PATTERN =
@@ -33,21 +44,10 @@ namespace VisualStudioSummitDemo.Interceptors.Auditoria.CommandHandlers
                 dbCommand.Transaction = command.Transaction;
                 dbCommand.CommandText = string.Format(@"SELECT CAST(IDENT_CURRENT('{0}') as bigint) as Id;",
                     match.Groups["table"].Value);
-                entityId = (long) dbCommand.ExecuteScalar();
+                entityId = (long)dbCommand.ExecuteScalar();
                 Context.Result = dbCommand.ExecuteReader();
             }
             return entityId;
-        }
-    }
-
-    public class UpdateCommandHandler : CommandHandler<int>
-    {
-        private const string UPDATE_PATTERN =
-            @"UPDATE \[dbo\]\.\[(?<table>\w+)\]\r?\n?SET (\[(?<field>\w+)\] = (?<value>(?>@)\d+|NULL),?\s?)+\r?\n?WHERE \(\[Id\] = (?<id>@\d+)\)";
-
-        public UpdateCommandHandler(DbCommandInterceptionContext<int> context)
-            : base(context, AuditEntryKind.Update, UPDATE_PATTERN)
-        {
         }
     }
 }

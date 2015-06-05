@@ -14,11 +14,6 @@ namespace VisualStudioSummitDemo.Interceptors.CommandHandlers
             return nextHandler != null ? nextHandler.HandleRequest(command) : null;
         }
 
-        public T Cast(DbCommandTree command)
-        {
-            throw new System.NotImplementedException();
-        }
-
         public ICommandTreeHandler<T> SetNextHandler(ICommandTreeHandler<T> handler)
         {
             return nextHandler = handler;

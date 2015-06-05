@@ -23,7 +23,9 @@ namespace VisualStudioSummitDemo.Interceptors.SoftDelete.CommandHandlers
 
             if (column != null)
             {
-                var setClause = DbExpressionBuilder.SetClause(deleteCommand.Target.VariableType.Variable(COLUMN_NAME).Property(column), DbExpression.FromBoolean(true));
+                var dbExpression = DbExpression.FromBoolean(true);
+                var propertyExpression = deleteCommand.Target.VariableType.Variable(COLUMN_NAME).Property(column);
+                var setClause = DbExpressionBuilder.SetClause(propertyExpression, dbExpression);
 
                 return new DbUpdateCommandTree(deleteCommand.MetadataWorkspace,
                                                deleteCommand.DataSpace,
